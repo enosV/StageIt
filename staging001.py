@@ -1,5 +1,4 @@
 import os
-#from pathlib import Path #need to check this
 
 LastName = input("Last name: ")
 Last = LastName.upper()
