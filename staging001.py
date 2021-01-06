@@ -6,11 +6,11 @@ Last = LastName.upper()
 FirstName = input("First name: ")
 First = FirstName.capitalize()
 
-RegNo = input("Registration Number: ")
-Reg = RegNo[:3] + '-' + RegNo[3:]
+FyNo = input("FY Number: ")
+FY = FyNo[:2] + '-' + FyNo[4:]
 
-NewDir = (Last + ', ' + First + ' ' + str(Reg))
+NewDir = (Last + ', ' + First + ' ' + str(FY))
 os.makedirs(NewDir)
 
-print("Your case for " + Last + ", " + First + " " + str(Reg) + " has been staged")
+print("Your case for " + Last + ", " + First + " " + str(FY) + " has been staged")
 
