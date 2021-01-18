@@ -8,21 +8,28 @@ Last = LastName.upper()
 FirstName = input("First name: ")
 First = FirstName.capitalize()
 
-#RegNo currently take anything and splits into XX-XXXX ** Need to convert to integers only **
-RegNo = input("Registration Number: ")
-Reg = RegNo[:2] + '-' + RegNo[2:]
+#This will ask the user for the FY number. It also ensures that the user only adds numbers and provides
+#a friendly exception if they enter anything else that's not a number.
+while True:
+    try:
+        FyNo = int(input("FY Number: "))
+        stgn = str(FyNo)
+        num = stgn[:2] + '-' + stgn[2:]
+        break
+    except ValueError:
+        print("Oops! Numbers only, please!")
 
 #NewDir combines the 3 inputs from the user
-NewDir = (Last + ', ' + First + ' ' + str(Reg))
+NewDir = (Last + ', ' + First + ' ' + str(num))
 
-#This is where we tell our program to change directory over to the the network path. 
-#The path needs to be mounted prior to setting the path. 
-#By default is commented and needs to be commented out to be used.
+#By default the program will write the staged folder to current working directory.
+#This is where we tell our program to change directory to the the network path, e.g (r'\\UNCpath\Goes\Here\'). 
+#Make sure the network path is mounted on the host prior to using this option.
 #os.chdir(r'ENTER_NETWORK_PATH_HERE')
 
-#This will write it on the current working directory (this changes if a path is privided above)
+#This will write it on the current working directory (this changes if a netowrk path is privided above)
 os.makedirs(NewDir)
 
 #This just confirms to the user that the folder has been staged
-print("Your case for " + Last + ", " + First + " " + str(Reg) + " has been staged")
+print("Your case for " + Last + ", " + First + " " + str(num) + " has been staged")
 
